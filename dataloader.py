@@ -71,11 +71,11 @@ def dataset2dataloader(dataset_path="/data/wyf/project3-Named Entity Recognition
     return train_iter, val_iter, TEXT.vocab, TAG.vocab
 
 
-if __name__ == "__main__":
-    # train_csv, dev_csv = prepare_data(dataset_path="../dataset/conll2003-IOB")
-    train_iter, val_iter, sent_vocab, tag_vocab = dataset2dataloader(dataset_path="../dataset/conll2003-IOB", debug=True)
-    word_vectors = sent_vocab.vectors
+# if __name__ == "__main__":
+#     # train_csv, dev_csv = prepare_data(dataset_path="../dataset/conll2003-IOB")
+#     train_iter, val_iter, sent_vocab, tag_vocab = dataset2dataloader(dataset_path="../dataset/conll2003-IOB", debug=True)
+#     word_vectors = sent_vocab.vectors
 
-    for batch in train_iter:
-        print(batch.sent.shape, batch.tag.shape)
-        break
+#     for batch in train_iter:
+#         print(batch.sent.shape, batch.tag.shape)
+#         break

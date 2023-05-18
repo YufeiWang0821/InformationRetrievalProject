@@ -1,10 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-Created on 2020/6/13 16:01
-@author: phil
-"""
-
 import torch.nn as nn
 from torchcrf import CRF
 import torch
