@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-Created on 2020/6/13 11:58
-@author: phil
-"""
 import os
 import pandas as pd
 import spacy
@@ -62,7 +56,6 @@ def dataset2dataloader(dataset_path="/data/wyf/project3-Named Entity Recognition
         fields=[('sent', TEXT), ('tag', TAG)])
 
     TEXT.build_vocab(train, vectors='glove.6B.50d')  # , max_size=30000)
-    #TEXT.build_vocab(train, vectors='/data/wyf/nlp-beginner-master/mine/2/.vector_cache/glove.6B.50d')
     TAG.build_vocab(val)
 
     # 当 corpus 中有的 token 在 vectors 中不存在时 的初始化方式.
