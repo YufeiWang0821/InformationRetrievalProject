@@ -1,0 +1,5 @@
+https://easyai.tech/ai-definition/ner/
+https://zhuanlan.zhihu.com/p/156914795
+https://paperswithcode.com/sota/named-entity-recognition-ner-on-conll-2003
+https://huggingface.co/datasets/conll2003
+https://arxiv.org/abs/1812.09449v3
