@@ -84,7 +84,6 @@ def dataset2dataloader(dataset_path="/data/wyf/InformationRetrievalProject/data/
     def tokenizer(text):
         return text.split(" ")
 
-    # 这里只是定义了数据格式
     TEXT = data.Field(sequential=True, tokenize=tokenizer, lower=False)
     TAG = data.Field(sequential=True, tokenize=tokenizer, lower=False)
     train, val, test = data.TabularDataset.splits(
@@ -95,17 +94,13 @@ def dataset2dataloader(dataset_path="/data/wyf/InformationRetrievalProject/data/
     TAG.build_vocab(val)
     # 下面不注释acc0.89 反之0.95
     #TAG.build_vocab(test)
-
-    # 当 corpus 中有的 token 在 vectors 中不存在时 的初始化方式.
+    
     TEXT.vocab.vectors.unk_init = init.xavier_uniform
 
     DEVICE = "cpu"
     train_iter = data.BucketIterator(train, batch_size=batch_size, sort_key=lambda x: len(x.sent), device=DEVICE)
     val_iter = data.BucketIterator(val, batch_size=batch_size, sort_key=lambda x: len(x.sent), device=DEVICE)
     #test_iter = data.BucketIterator(test, batch_size=batch_size, sort_key=lambda x: len(x.sent), device=DEVICE)
-
-
-    # 在 test_iter , sort一定要设置成 False, 要不然会被 torchtext 搞乱样本顺序
     test_iter = data.Iterator(dataset=test, batch_size=128, train=False, sort=False, device=DEVICE)
 
     return train_iter, val_iter, test_iter, TEXT.vocab, TAG.vocab
